@@ -5,14 +5,14 @@ Connects to AWS via boto3 to evaluate IAM policies, password policy,
 and root account MFA status against CIS benchmark rules.
 
 In DEMO_MODE (env DEMO_MODE=true), returns mock findings without
-requiring real AWS credentials — used by the FastAPI demo endpoint.
+requiring real AWS credentials -- used by the FastAPI demo endpoint.
 """
 import json
 import os
 from dataclasses import dataclass
 from typing import Any
 
-from .rules import IAM_RULES, Rule, Severity
+from .rules import IAM_RULES, Rule
 
 try:
     import boto3
