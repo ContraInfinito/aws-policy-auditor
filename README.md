@@ -16,6 +16,64 @@ CIS AWS Foundations Benchmark security checks for IAM and S3, delivered as a Pyt
 
 ---
 
+## Real scan output
+
+Running against a fresh AWS account with no password policy configured:
+
+```
+$ python -m auditor.cli scan all --output my-findings.json
+Scanning IAM...
+
+-- aws-policy-auditor -- IAM scan
+   profile: default  |  2026-06-06T18:30:43Z
+----------------------------------------------------
+  ! MEDIUM    Weak password policy — minimum length below 14
+           resource: account_password_policy
+           detail:   No IAM password policy configured.
+           cis ref:  CIS 1.8
+           fix:      Set minimum password length to 14+ characters in IAM password policy.
+
+  - LOW       Password policy does not require uppercase
+           resource: account_password_policy
+           detail:   No IAM password policy configured.
+           cis ref:  CIS 1.9
+           fix:      Enable 'require uppercase letters' in IAM password policy.
+
+  - LOW       Password policy does not require symbols
+           resource: account_password_policy
+           detail:   No IAM password policy configured.
+           cis ref:  CIS 1.10
+           fix:      Enable 'require symbols' in IAM password policy.
+
+  - LOW       Password reuse prevention not set
+           resource: account_password_policy
+           detail:   No IAM password policy configured.
+           cis ref:  CIS 1.11
+           fix:      Set password reuse prevention to 24 in IAM password policy.
+
+----------------------------------------------------
+  Summary
+  MEDIUM    # 1
+  LOW       ### 3
+
+  Total: 4 finding(s)
+
+Scanning S3...
+  OK  No findings. All checks passed.
+```
+
+After configuring the password policy in the IAM console, re-running confirms the fixes:
+
+```
+$ python -m auditor.cli scan all --output my-findings.json
+Scanning IAM...
+  OK  No findings. All checks passed.
+Scanning S3...
+  OK  No findings. All checks passed.
+```
+
+---
+
 ## Quick start
 
 ```bash
