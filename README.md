@@ -4,6 +4,9 @@ CIS AWS Foundations Benchmark security checks for IAM and S3, delivered as a Pyt
 
 [![CI](https://github.com/ContraInfinito/aws-policy-auditor/actions/workflows/ci.yml/badge.svg)](https://github.com/ContraInfinito/aws-policy-auditor/actions)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/)
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://aws-policy-auditor.onrender.com/docs)
+
+**Live API:** https://aws-policy-auditor.onrender.com/docs
 
 ---
 
